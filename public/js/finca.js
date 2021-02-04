@@ -15387,7 +15387,7 @@ var app = window.App = new Vue({
   },
   methods: {
     init: function init() {
-      this.$broadcast('MapsApiLoaded');
+      this.$emit('MapsApiLoaded');
     },
     traerFincas: function traerFincas() {
       var _this = this;

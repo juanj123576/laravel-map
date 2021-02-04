@@ -27,7 +27,7 @@ const app = window.App = new Vue({
         {
 
             init: function(){
-                this.$broadcast('MapsApiLoaded');
+                this.$emit('MapsApiLoaded');
             },
 
             traerFincas(){
