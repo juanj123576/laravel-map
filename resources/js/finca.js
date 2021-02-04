@@ -1,26 +1,40 @@
 const { default: Axios } = require('axios');
 
 window.Vue = require('vue');
-const app = new Vue({
+import Map from './Map.vue';
+const app = window.App = new Vue({
 
     el: '#finca',
+    components: {
+        Map
+    },
     data:{
       fincas:[],
         finca:{nombre:'',municipio:'',departamento:''},
+        mapName: "map",
+
 
     }, created(){
-        this.traerUsarios();
+
+        this.traerFincas();
+
+
+
+
     },
 
     methods:
         {
 
+            init: function(){
+                this.$broadcast('MapsApiLoaded');
+            },
 
-
-            traerUsarios(){
-                Axios.get('/usuarios')
+            traerFincas(){
+                Axios.get('/fincas')
                     .then((res) =>{
-                        this.usuarios = res.data;
+                        this.fincas = res.data;
+                        console.log(res.data);
                     })
             },
             verFinca(usuario){
@@ -41,7 +55,8 @@ const app = new Vue({
                         this.fincas.push(fincaServidor);
 
                     })
-            }
+            },
+
 
 
         }

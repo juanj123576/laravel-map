@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Finca;
 class FincaController extends Controller
 {
+    public function index(Request $request)
+    {
+        if ($request->wantsJson()) {
+            return Finca::where('user_id', auth()->id())->get();
+        } else {
+            return view('mapa');
+        }
+    }
     public function crear(Request $request)
     {
         $finca= new Finca();

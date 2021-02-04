@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/usuarios', [App\Http\Controllers\PruebaController::class, 'index']);
+Route::get('/fincas', [App\Http\Controllers\FincaController::class, 'index']);
 Route::post('/enviarfinca', [App\Http\Controllers\FincaController::class, 'crear']);
 
 Route::get('/', function () {

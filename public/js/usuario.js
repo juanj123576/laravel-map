@@ -14468,8 +14468,7 @@ var app = new Vue({
       window.location.href = "/page?direccion=" + usuario.direccion;
       /* Axios.get('/page')
        .then((res) =>{
-        
-       })*/
+        })*/
     }
   }
 });
