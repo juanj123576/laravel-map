@@ -33,7 +33,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/usuarios', [App\Http\Controllers\PruebaController::class, 'index']);
 Route::get('/fincas', [App\Http\Controllers\FincaController::class, 'index']);
+Route::get('/fincasUsuario/', [App\Http\Controllers\FincaController::class, 'indexfincas']);
 Route::post('/enviarfinca', [App\Http\Controllers\FincaController::class, 'crear']);
+Route::put('/fincas/{id}', [App\Http\Controllers\FincaController::class, 'update']);
+Route::get('/usuariofincas/{id}', [App\Http\Controllers\FincaController::class, 'traerUsuario']);
+Route::get('/usuariofinca/{id}', [App\Http\Controllers\FincaController::class, 'traerFinca']);
+
 
 Route::get('/', function () {
     return view('auth.register');

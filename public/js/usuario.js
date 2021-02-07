@@ -14442,18 +14442,22 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
     Axios = _require["default"];
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-var app = new Vue({
+var app = window.App = new Vue({
   el: '#usuario',
   data: {
     nombre: '',
     password: '',
     direccion: '',
     email: '',
-    marcadores: [],
-    usuarios: []
+    usuario: {},
+    usuarios: [],
+    fincas: [],
+    fincas2: [],
+    fincasusuario: ''
   },
   created: function created() {
     this.traerUsarios();
+    this.traerFincasdireccion();
   },
   methods: {
     traerUsarios: function traerUsarios() {
@@ -14464,11 +14468,33 @@ var app = new Vue({
       });
     },
     verFinca: function verFinca(usuario) {
-      /*console.log(usuario);*/
-      window.location.href = "/page?direccion=" + usuario.direccion;
-      /* Axios.get('/page')
-       .then((res) =>{
-        })*/
+      var _this2 = this;
+
+      Axios.get("/usuariofincas/".concat(usuario.id)).then(function (res) {
+        _this2.fincas = res.data;
+        console.log(_this2.fincas);
+      });
+    },
+    traerFincasdireccion: function traerFincasdireccion() {
+      var _this3 = this;
+
+      var direccion;
+      Axios.get("/fincasUsuario/").then(function (res) {
+        _this3.fincasusuario = res.data;
+        _this3.fincas2 = res.data;
+        direccion = _this3.fincasusuario[0].direccion;
+      });
+    },
+    verFincasUsuario: function verFincasUsuario(finca) {
+      window.location.href = "/page?direccion=" + finca.direccion;
+    },
+    enviardireccion: function enviardireccion(finca) {
+      $('#nombre').val(finca.direccion);
+      console.log($('#nombre').val());
+    },
+    enviardireccion2: function enviardireccion2(finca) {
+      $('#nombre2').val(finca.direccion);
+      console.log($('#nombre2').val());
     }
   }
 });

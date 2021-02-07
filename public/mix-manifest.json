@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/finca.js": "/js/finca.js",
+    "/js/mapa.js": "/js/mapa.js",
     "/js/usuario.js": "/js/usuario.js"
 }
